@@ -101,7 +101,7 @@ else
  module tb_JKFF;
  reg J,K,clk,rst;
  wire Q;
- JKFF uut(s,r,clk,rst,Q);
+ JKFF uut(J,K,clk,rst,Q);
  always #5 clk=~clk;
  initial begin
  clk=0;J=0;K=0;rst=1;
@@ -120,7 +120,8 @@ else
 ```
 #### SIMULATION OUTPUT
 
-<img width="940" height="561" alt="image" src="https://github.com/user-attachments/assets/be84a8ee-cb02-43eb-9161-7e8ca1cd86bb" />
+<img width="1622" height="972" alt="Screenshot 2025-09-27 093623" src="https://github.com/user-attachments/assets/a59547dd-2d54-4345-b18e-235977f37d1b" />
+
 
 
 ### D Flip-Flop (Blocking)
@@ -133,15 +134,17 @@ always @(posedge clk)
 begin
 if(rst==1)
 q=0;
+else if(d==0)
+q=0;
 else
-q=q;
+q=1;
 end 
 endmodule
+
 
 ```
 ### D Flip-Flop Test bench 
 ```verilog
-`timescale 1ns / 1ps
 module tb_DFF;
 reg clk,rst,d;
 wire q;
@@ -157,17 +160,16 @@ rst=0;
 d=0;
 #10
 d=1;
-#10
+#20
 $finish;
-end 
+end 
 endmodule
-
-
 ```
 
 #### SIMULATION OUTPUT
 
-<img width="940" height="566" alt="image" src="https://github.com/user-attachments/assets/38f60b18-4f09-4bf8-9c0e-dd691b2370b5" />
+<img width="1602" height="970" alt="Screenshot 2025-09-27 093421" src="https://github.com/user-attachments/assets/d54e58dc-89bc-4553-ab57-bb85d40b9c8c" />
+
 
 
 ### T Flip-Flop (Blocking)
@@ -189,7 +191,6 @@ endmodule
 ```
 ### T Flip-Flop Test bench 
 ```verilog
-`timescale 1ns / 1ps
 module tb_TFF;
 reg clk,rst,T;
 wire Q;
@@ -205,16 +206,17 @@ rst=0;
 T=0;
 #10
 T=1;
+#20
 $finish;
-end 
+end 
 endmodule
-
 
 ```
 
 #### SIMULATION OUTPUT
 
-<img width="940" height="566" alt="image" src="https://github.com/user-attachments/assets/be85b8e3-82ef-4ddc-8c43-079ea5b04375" />
+<img width="1602" height="971" alt="Screenshot 2025-09-27 093350" src="https://github.com/user-attachments/assets/2afb90d8-66fc-4279-9ede-546cfb625b84" />
+
 
 
 ### RESULT
